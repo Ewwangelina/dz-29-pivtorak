@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forwarding</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="body container">
+
+<!--На странице есть две кнопки. - переадресовывается на другой сайт (по ранее введенной ссылке).
+    Реализуйте проверку на http/https. Если протокол не указан – добавляем-->
+
+<section class="link1">
+    <button id="btn-http">Перейти на сайт по http</button>
+</section>
+
+<section class="link2">
+    <button id="btn-https">Перейти на сайт по https</button>
+</section>
+
+<script>
+    const btnHttp = document.getElementById('btn-http');
+    const btnHttps = document.getElementById('btn-https');
+
+    function redirectToUrl(url) {
+        if (!url.match(/^https?:\/\//i)) {
+            url = 'https://' + url;
+        }
+        window.location.href = url;
+    }
+
+    btnHttp.addEventListener('click', function() {
+        const url = prompt('Введите URL сайта (без указания протокола)');
+        if (url) {
+            redirectToUrl(url);
+        }
+    });
+
+    btnHttps.addEventListener('click', function() {
+        const url = prompt('Введите URL сайта (без указания протокола)');
+        if (url) {
+            redirectToUrl('https://' + url);
+        }
+    });
+
+
+</script>
+</body>
+</html>
